@@ -44,9 +44,6 @@ RUN apk --no-cache add git build-base bash \
     && mv ./su-exec /usr/local/sbin/ \
     && apk del git build-base
 
-### 
-
-
 ENV WORKSPACE="/mnt/workspace" \
     SHELL="/bin/bash"
 
