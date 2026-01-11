@@ -22,7 +22,8 @@ RUN apk --no-cache add git cmake make musl-dev gcc gettext-dev libintl \
 # Unfortunately, it's got fixed alpine version and missing dependency so easiest was just to copy it
 RUN apk add --no-cache go git build-base && \
   go install github.com/sorenisanerd/gotty@v1.5.0 && \
-  apk del go git build-base
+  apk del go git build-base && \
+  cp /root/go/bin/gotty /usr/local/bin
 # binary takes about 14 Mb
 ### 
 
@@ -55,4 +56,4 @@ WORKDIR "${WORKSPACE}"
 ENTRYPOINT ["asEnvUser"]
 # -a options connects to existing emacs session or starts a new one if there is no Emacs running
 # see https://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html
-CMD ["/root/go/bin/gotty", "--permit-write", "--reconnect", "emacsclient", "--tty", "-a", "emacs"]
+CMD ["/usr/local/bin/gotty", "--permit-write", "--reconnect", "emacsclient", "--tty", "-a", "emacs"]
