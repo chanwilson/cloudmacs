@@ -55,4 +55,4 @@ WORKDIR "${WORKSPACE}"
 ENTRYPOINT ["asEnvUser"]
 # -a options connects to existing emacs session or starts a new one if there is no Emacs running
 # see https://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html
-CMD ["gotty", "--permit-write", "--reconnect", "emacsclient", "--tty", "-a", "emacs"]
+CMD ["/root/go/bin/gotty", "--permit-write", "--reconnect", "emacsclient", "--tty", "-a", "emacs"]
