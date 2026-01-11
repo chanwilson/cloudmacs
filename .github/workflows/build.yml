@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t karlicoss/cloudmacs:latest .
+        run: docker build -t chanwilson/cloudmacs:latest .
 
       - name: Push Docker image to Docker Hub
-        run: docker push karlicoss/cloudmacs:latest
+        run: docker push chanwilson/cloudmacs:latest
