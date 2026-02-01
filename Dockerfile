@@ -43,9 +43,9 @@ RUN apk --no-cache add git build-base bash \
     && make \
     && chmod 770 su-exec \
     && mv ./su-exec /usr/local/sbin/ \
-    && apk del git build-base
+    && apk del build-base
 
-ENV WORKSPACE="/mnt/workspace" \
+ENV WORKSPACE="/home/cwilson" \
     SHELL="/bin/bash"
 
 # gotty default
@@ -56,4 +56,4 @@ WORKDIR "${WORKSPACE}"
 ENTRYPOINT ["asEnvUser"]
 # -a options connects to existing emacs session or starts a new one if there is no Emacs running
 # see https://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html
-CMD ["/usr/local/bin/gotty", "--permit-write", "--reconnect", "emacsclient", "--tty", "-a", "emacs"]
+CMD ["/usr/local/bin/gotty", "--permit-write", "--reconnect", "emacsclient", "--tty", "-a", ""]
